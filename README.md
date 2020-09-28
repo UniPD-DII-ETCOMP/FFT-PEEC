@@ -10,9 +10,8 @@ This code has been inspired by VoxHenry https://github.com/acyucel/VoxHenry
  
 FFT_PEEC_COND.m is the main file you must run to start the code. 
 
-All user-settable quantities, e.g. frequency and resistivity, are contained in the block identified by the 
+All user-settable quantities, e.g. frequency, are contained in the block identified by the 
 BEGIN USER SETTINGS / END USER SETTINGS comments.
--------------------------------------------------------------------
 
 Available test cases
 --------------------
