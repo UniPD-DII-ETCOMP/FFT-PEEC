@@ -1,6 +1,7 @@
 <p align="center">
 	<img src="image.png" width="486.4">
 </p>
+
 # FFT-PEEC 
 
 This directory contains a FFT-PEEC code for electromagnetic problems
