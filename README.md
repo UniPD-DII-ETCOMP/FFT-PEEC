@@ -1,5 +1,5 @@
 <p align="center">
-	<img src="pic.png" width="486.4">
+	<img src="image.png" width="486.4">
 </p>
 
 # FFT-PEEC 
