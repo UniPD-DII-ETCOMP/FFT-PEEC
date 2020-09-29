@@ -1,4 +1,4 @@
-<img src="image1.png" width="486.4"> <img src="image2.png" width="486.4">
+<img src="image.png" width="486.4">
 # FFT-PEEC 
 
 This directory contains a FFT-PEEC code for electromagnetic problems
