@@ -156,9 +156,22 @@ if x_ray_flag
 end
 drawnow
 %%
-dx=(o(1).gridCOx(2)-o(1).gridCOx(1));
-dy=(o(1).gridCOy(2)-o(1).gridCOy(1));
-dz=(o(1).gridCOz(2)-o(1).gridCOz(1));
+%%
+if Nx>1
+dx=abs(o(1).gridCOx(2)-o(1).gridCOx(1));
+else
+dx=(max(xco(:))-min(xco(:)))*scal_geomery.x;    
+end
+if Ny>1
+dy=abs(o(1).gridCOy(2)-o(1).gridCOy(1));
+else
+dy=(max(yco(:))-min(yco(:)))*scal_geomery.y;    
+end
+if Nz>1
+dz=abs(o(1).gridCOz(2)-o(1).gridCOz(1));
+else
+dz=(max(zco(:))-min(zco(:)))*scal_geomery.z;
+end
 xidx=xd([idx]);
 yidx=yd([idx]);
 zidx=zd([idx]);
@@ -196,9 +209,7 @@ L=length(o(1).gridCOx);
 M=length(o(1).gridCOy);
 N=length(o(1).gridCOz);
 nVoxel=L*M*N;
-smeshx=abs(o(1).gridCOx(2)-o(1).gridCOx(1));
-smeshy=abs(o(1).gridCOy(2)-o(1).gridCOy(1));
-smeshz=abs(o(1).gridCOz(2)-o(1).gridCOz(1));
+smeshx=dx;smeshy=dy;smeshz=dz;
 %%  
 for ii = 1:how_many_stl
 Ind(ii).ind= find(o(ii).OUTPUTgrid);

@@ -1,3 +1,4 @@
+<img src="image.png" width="150" height="150">
 # FFT-PEEC 
 
 This directory contains a FFT-PEEC code for electromagnetic problems
@@ -15,7 +16,7 @@ BEGIN USER SETTINGS / END USER SETTINGS comments.
 
 Available test cases
 --------------------
-Two simple test cases are contained in separate directories under "data". 
+Three simple test cases are contained in separate directories under "data". 
 Set the "name_dir" variable in "FFT_PEEC_COND.m"  to the appropriate directory.
 
 User-defined test cases

@@ -1,0 +1,170 @@
+solid COMSOL rendering object ext3
+facet normal -1 -0 -0
+outer loop
+vertex -4250 -225 101
+vertex -4250 -100 101
+vertex -4250 -225 100
+endloop
+endfacet
+facet normal -1 -0 -0
+outer loop
+vertex -4250 -225 100
+vertex -4250 -100 101
+vertex -4250 -100 100
+endloop
+endfacet
+facet normal -0 -1 0
+outer loop
+vertex -4250 -225 100
+vertex -4200 -225 101
+vertex -4250 -225 101
+endloop
+endfacet
+facet normal -0 -1 0
+outer loop
+vertex -4200 -225 100
+vertex -4200 -225 101
+vertex -4250 -225 100
+endloop
+endfacet
+facet normal -0 -0 -1
+outer loop
+vertex -4250 -100 100
+vertex -4200 -100 100
+vertex -4250 -225 100
+endloop
+endfacet
+facet normal -0 -0 -1
+outer loop
+vertex -4250 -225 100
+vertex -4200 -100 100
+vertex -4200 -225 100
+endloop
+endfacet
+facet normal 0 0 1
+outer loop
+vertex -4250 -100 101
+vertex -4250 -225 101
+vertex -4200 -100 101
+endloop
+endfacet
+facet normal 0 0 1
+outer loop
+vertex -4250 -225 101
+vertex -4200 -225 101
+vertex -4200 -100 101
+endloop
+endfacet
+facet normal -0 1 -0
+outer loop
+vertex -4250 -100 101
+vertex -4200 -100 101
+vertex -4250 -100 100
+endloop
+endfacet
+facet normal -0 1 -0
+outer loop
+vertex -4250 -100 100
+vertex -4200 -100 101
+vertex -4200 -100 100
+endloop
+endfacet
+facet normal 1 -0 -0
+outer loop
+vertex -4200 -225 100
+vertex -4200 -100 101
+vertex -4200 -225 101
+endloop
+endfacet
+facet normal 1 -0 -0
+outer loop
+vertex -4200 -100 100
+vertex -4200 -100 101
+vertex -4200 -225 100
+endloop
+endfacet
+facet normal -1 -0 -0
+outer loop
+vertex -4250 100 101
+vertex -4250 225 101
+vertex -4250 100 100
+endloop
+endfacet
+facet normal -1 -0 -0
+outer loop
+vertex -4250 100 100
+vertex -4250 225 101
+vertex -4250 225 100
+endloop
+endfacet
+facet normal -0 -1 0
+outer loop
+vertex -4250 100 100
+vertex -4200 100 101
+vertex -4250 100 101
+endloop
+endfacet
+facet normal -0 -1 0
+outer loop
+vertex -4200 100 100
+vertex -4200 100 101
+vertex -4250 100 100
+endloop
+endfacet
+facet normal -0 -0 -1
+outer loop
+vertex -4250 225 100
+vertex -4200 225 100
+vertex -4250 100 100
+endloop
+endfacet
+facet normal -0 -0 -1
+outer loop
+vertex -4250 100 100
+vertex -4200 225 100
+vertex -4200 100 100
+endloop
+endfacet
+facet normal 0 0 1
+outer loop
+vertex -4250 225 101
+vertex -4250 100 101
+vertex -4200 225 101
+endloop
+endfacet
+facet normal 0 0 1
+outer loop
+vertex -4250 100 101
+vertex -4200 100 101
+vertex -4200 225 101
+endloop
+endfacet
+facet normal -0 1 -0
+outer loop
+vertex -4250 225 101
+vertex -4200 225 101
+vertex -4250 225 100
+endloop
+endfacet
+facet normal -0 1 -0
+outer loop
+vertex -4250 225 100
+vertex -4200 225 101
+vertex -4200 225 100
+endloop
+endfacet
+facet normal 1 -0 -0
+outer loop
+vertex -4200 100 100
+vertex -4200 225 101
+vertex -4200 100 101
+endloop
+endfacet
+facet normal 1 -0 -0
+outer loop
+vertex -4200 225 100
+vertex -4200 225 101
+vertex -4200 100 100
+endloop
+endfacet
+endsolid COMSOL rendering object ext3

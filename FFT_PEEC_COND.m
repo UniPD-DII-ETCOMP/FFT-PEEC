@@ -16,7 +16,7 @@ plot_potential_flag = 1; %color plot of phi real and imag
 paraview_export_flag = 1; % export to paraviw
 refine.flag = 0; refine.x=1; refine.y=1; refine.z=1; % refine
 Integration_flag = 'NumAn'; %'NumAn'; 'NumNum' (Integration: NumericalNumerical or AnalyticalNumerical)
-ext_field_flag = 1; % exernal field
+ext_field_flag = 0; % exernal field
 % below you can write the external electric field as a function of x,y,z
 % and omega. Active only if ext_field_flag=1
 Ex_ext = @(x,y,z,omega) -1j*omega*y; Ey_ext = @(x,y,z,omega) 1j*omega*x; Ez_ext = @(x,y,z,omega) 0*z; % external field 
@@ -240,6 +240,10 @@ ylabel('y')
 zlabel('z')
 title('Current Density Vector \Re Part')
 c1.Location = 'southoutside';
+xlim([min(XYZ(:,1))-dx max(XYZ(:,1))+dx])
+ylim([min(XYZ(:,2))-dy max(XYZ(:,2))+dy])
+zlim([min(XYZ(:,3))-dz max(XYZ(:,3))+dz])
+%
 jjI = imag(J); %reshape(imag(Jout),L*M*N,3)/(l^2);
 subplot(1,2,2)
 normJI=sqrt(jjI(:,1).^2+jjI(:,2).^2+jjI(:,3).^2);
@@ -253,6 +257,9 @@ ylabel('y')
 zlabel('z')
 title('Current Density Vector \Im Part')
 c1.Location = 'southoutside';
+xlim([min(XYZ(:,1))-dx max(XYZ(:,1))+dx])
+ylim([min(XYZ(:,2))-dy max(XYZ(:,2))+dy])
+zlim([min(XYZ(:,3))-dz max(XYZ(:,3))+dz])
 end
 %% plot Potential
 if plot_potential_flag
@@ -268,6 +275,9 @@ colormap jet
 c1=colorbar;
 title('Potential \Re')
 c1.Location = 'southoutside';
+xlim([min(XYZ(:,1))-dx max(XYZ(:,1))+dx])
+ylim([min(XYZ(:,2))-dy max(XYZ(:,2))+dy])
+zlim([min(XYZ(:,3))-dz max(XYZ(:,3))+dz])
 subplot(1,2,2)
 scatter3(xdp(idxV),ydp(idxV),zdp(idxV),10,'filled','cdata',imag(potval(idxV)))
 axis equal
@@ -276,6 +286,9 @@ colormap jet
 c2=colorbar;
 title('Potential \Im')
 c2.Location = 'southoutside';
+xlim([min(XYZ(:,1))-dx max(XYZ(:,1))+dx])
+ylim([min(XYZ(:,2))-dy max(XYZ(:,2))+dy])
+zlim([min(XYZ(:,3))-dz max(XYZ(:,3))+dz])
 end
 %% paraview
 if paraview_export_flag
