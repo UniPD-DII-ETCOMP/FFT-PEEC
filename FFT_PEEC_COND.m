@@ -254,15 +254,6 @@ colormap jet
 c2=colorbar;
 title('Potential \Im')
 c2.Location = 'southoutside';
-%
-figure
-scatter3(xdp(idxV),ydp(idxV),zdp(idxV),10,'filled','cdata',(abs(potval(idxV))))
-axis equal
-view(3)
-colormap jet 
-c1=colorbar;
-title('Potential abs')
-c1.Location = 'southoutside';
 end
 %% paraview
 if paraview_export_flag
