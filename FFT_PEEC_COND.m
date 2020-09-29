@@ -9,20 +9,20 @@ clc
 %% Directory
 name_dir='test1';
 %% Frequency
-freq = 1e4; %[Hz]
+freq = 1e3; %[Hz]
 %% Selections
 plot_vectorsJ_flag = 1; %quiver plot of real and imag of J
 plot_potential_flag = 1; %color plot of phi real and imag
 paraview_export_flag = 1; % export to paraviw
 refine.flag = 0; refine.x=1; refine.y=1; refine.z=1; % refine
 Integration_flag = 'NumAn'; %'NumAn'; 'NumNum' (Integration: NumericalNumerical or AnalyticalNumerical)
-ext_field_flag = 0; % exernal field
+ext_field_flag = 1; % exernal field
 % below you can write the external electric field as a function of x,y,z
 % and omega. Active only if ext_field_flag=1
 Ex_ext = @(x,y,z,omega) -1j*omega*y; Ey_ext = @(x,y,z,omega) 1j*omega*x; Ez_ext = @(x,y,z,omega) 0*z; % external field 
 %% Solver parameters
 tol = 1e-6;
-inner_it = 30;
+inner_it = 40;
 outer_it = 5;
 %%
 %% END USER SETTINGS
@@ -31,7 +31,26 @@ outer_it = 5;
 dad = pwd;
 cd('fun'); addpath(genpath(pwd)); cd(dad)
 cd('fortran'); addpath(pwd); cd(dad)
-cd('data'); cd(name_dir); load('data.mat'); cd(dad)
+cd('data'); cd(name_dir); load('data.mat'); 
+fileList = dir('*.stl');
+figure
+hold on
+xmin=[];xmax=[];ymin=[];ymax=[];zmin=[];zmax=[];ccolor=distinguishable_colors(size(fileList,1));
+for ii = 1:size(fileList,1)
+    [stlcoords] = READ_stl(fileList(ii).name);
+    xco = squeeze( stlcoords(:,1,:) )';
+    yco = squeeze( stlcoords(:,2,:) )';
+    zco = squeeze( stlcoords(:,3,:) )';
+    [hpat] = patch(xco,yco,zco,ccolor(ii,:));
+    axis equal
+    xlabel('x');
+    ylabel('y');
+    zlabel('z');
+    view(3)
+    title('stl (original, not scaled)')
+    drawnow
+end
+cd(dad)
 modelname = name_dir;
 %% refine
 if refine.flag
