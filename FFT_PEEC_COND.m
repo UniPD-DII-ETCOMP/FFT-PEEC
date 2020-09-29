@@ -209,28 +209,31 @@ disp(' ')
 if plot_vectorsJ_flag
 jjR = real(J);%reshape(real(Jout),L*M*N,3)/(l^2);
 figure
+subplot(1,2,1)
 normJR=sqrt(jjR(:,1).^2+jjR(:,2).^2+jjR(:,3).^2);
 quiver3_c_scal(XYZ(:,1),XYZ(:,2),XYZ(:,3),jjR(:,1),jjR(:,2),jjR(:,3),...
           normJR,4);
 axis equal
-colorbar
+c1=colorbar;
 caxis([min(normJR) max(normJR)]);
 xlabel('x')
 ylabel('y')
 zlabel('z')
 title('Current Density Vector \Re Part')
+c1.Location = 'southoutside';
 jjI = imag(J); %reshape(imag(Jout),L*M*N,3)/(l^2);
-figure
+subplot(1,2,2)
 normJI=sqrt(jjI(:,1).^2+jjI(:,2).^2+jjI(:,3).^2);
 quiver3_c_scal(XYZ(:,1),XYZ(:,2),XYZ(:,3),jjI(:,1),jjI(:,2),jjI(:,3),...
           normJI,4);
 axis equal
-colorbar
+c1=colorbar;
 caxis([min(normJI) max(normJI)]);
 xlabel('x')
 ylabel('y')
 zlabel('z')
 title('Current Density Vector \Im Part')
+c1.Location = 'southoutside';
 end
 %% plot Potential
 if plot_potential_flag
