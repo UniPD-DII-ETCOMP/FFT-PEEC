@@ -3,6 +3,8 @@ close all
 clear global
 clear
 clc
+restoredefaultpath
+warning on
 %%
 %% BEGIN USER SETTINGS
 %%

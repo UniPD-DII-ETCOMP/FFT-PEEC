@@ -3,7 +3,7 @@
 % lse_sparse_precon_prepare.m which is available at
 % https://github.com/acyucel/VoxHenry and in the directory VoxHenry_functions
 %%
-function [Y_inv,P_diag,D_diag,LL,UU,PP,QQ,RR] =  preparePREC_CAP_NEW(d,...
+function [Y_inv,P_diag,D_diag,LL,UU,PP,QQ,RR] =  preparePREC_NEW(d,...
     z_realF,idxFx,idxFy,idxFz,st_sparse_preconP,...
     st_sparse_preconL,AeeR,Aee,Kt,freq)
 omega = 2*pi*freq;
@@ -32,30 +32,9 @@ inds(1:num_curr,2)=inds(1:num_curr,1);
 inds(:,3)=(diag_pulse);
 %%Create Sparse 'Y_inv'
 Y_inv=sparse(inds(:,1),inds(:,2),inds(:,3));
-%Memory requirements
-diag_pulse = zeros(num_nodeR,1); 
-diag_pulse(1:num_nodeR,1) = st_sparse_preconP(1); %diagonal of P
-%%Sparse 'P_diag' formation
-inds = zeros(num_nodeR,3);
-inds(1:num_nodeR,1) = [1:1:num_nodeR];
-inds(1:num_nodeR,2)=inds(1:num_nodeR,1);
-inds(:,3)=(diag_pulse);
-%%Create Sparse 'P_diag' 
-P_diag =sparse(inds(:,1),inds(:,2),inds(:,3));
-%%Sparse Diagonal of D matrix: D = -iwI
-%%Entries of diagonal 'D_diag'
-diag_pulse = zeros(num_nodeR,1); 
-diag_pulse(1:num_nodeR,1) = -1i*omega; %diagonal of P
-%%Sparse 'D_diag' formation
-inds = zeros(num_nodeR,3);
-inds(1:num_nodeR,1) = [1:1:num_nodeR];
-inds(1:num_nodeR,2)=inds(1:num_nodeR,1);
-inds(:,3)= diag_pulse;
-%%Create Sparse 'D_diag' 
-D_diag =sparse(inds(:,1),inds(:,2),inds(:,3));
 %%Obtain Schur complement   
 % [A  B] = [Z       Ae']
-% [C  D]   [P*Ae  -iwI ]
+% [C  D]   [Ae        0]
 Sch_comp= D_diag - P_diag*(AeeR*Y_inv*AeeR.');        
 %%Computing Schur Inversion
 [LL,UU,PP,QQ,RR] = lu(Sch_comp);               
