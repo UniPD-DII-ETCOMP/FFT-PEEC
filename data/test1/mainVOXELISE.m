@@ -2,6 +2,8 @@ clear
 clear global
 close all
 clc
+restoredefaultpath
+warning on
 global meshXmin meshXmax meshYmin meshYmax meshZmin meshZmax
 %% BEGIN USER SETTINGS
 paraview_export_flag = 1;
