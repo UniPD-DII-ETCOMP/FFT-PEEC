@@ -195,7 +195,7 @@ clear Vx Vy Vz
 %% Computing Preconditioner
 disp('----COMPUTING PRECONDITIONER--------------------------------')
 mytic_prec=tic;
-[Y_inv,P_diag,D_diag,LL,UU,PP,QQ,RR] = preparePREC_CAP_NEW(d,z_realF,idxFx,idxFy,idxFz,st_sparse_preconP,st_sparse_preconL,AeeR,Aee,Kt,freq);
+[Y_inv,P_diag,D_diag,LL,UU,PP,QQ,RR] = preparePREC_NEW(d,z_realF,idxFx,idxFy,idxFz,st_sparse_preconP,st_sparse_preconL,AeeR,Aee,Kt,freq);
 fPMV = @(JOut_full_in)multiplyPREC_CAP_NEW(JOut_full_in,AeeR,Y_inv,P_diag,LL,UU,PP,QQ,RR);
 disp([' Total time for computing preconditioner ::: ' ,num2str(toc(mytic_prec))]);
 disp(' ')

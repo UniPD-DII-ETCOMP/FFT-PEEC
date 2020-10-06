@@ -39,9 +39,8 @@ clear xyz_src xyz_trg w
 elseif strcmp(Integration,'NumNum')
 [xyz1,ww1,xyz2,ww2] = GaussPoints([NGx,NGy,NGz],d,Integration);
 Lii = 0;
-NGs=7;
-for ii = 1:NGs*NGs*NGs
-    for jj = 1:(NGs+1)*(NGs+1)*(NGs+1)
+for ii = 1:NGx*NGy*NGz
+    for jj = 1:(NGx+1)*(NGy+1)*(NGz+1)
        Lii = Lii+ww1(ii)*ww2(jj)/(sqrt(sum((xyz1(ii,:)-xyz2(jj,:)).^2)));
     end
 end
