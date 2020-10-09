@@ -228,7 +228,7 @@ disp([' Total time for post processing J ::: ' ,num2str(toc(mytic_prec))]);
 disp(' ')
 %% Plot Vectors
 if plot_vectorsJ_flag
-jjR = real(J);%reshape(real(Jout),L*M*N,3)/(l^2);
+jjR = real(J);
 figure
 subplot(1,2,1)
 normJR=sqrt(jjR(:,1).^2+jjR(:,2).^2+jjR(:,3).^2);
@@ -246,7 +246,7 @@ xlim([min(XYZ(:,1))-dx max(XYZ(:,1))+dx])
 ylim([min(XYZ(:,2))-dy max(XYZ(:,2))+dy])
 zlim([min(XYZ(:,3))-dz max(XYZ(:,3))+dz])
 %
-jjI = imag(J); %reshape(imag(Jout),L*M*N,3)/(l^2);
+jjI = imag(J);
 subplot(1,2,2)
 normJI=sqrt(jjI(:,1).^2+jjI(:,2).^2+jjI(:,3).^2);
 quiver3_c_scal(XYZ(:,1),XYZ(:,2),XYZ(:,3),jjI(:,1),jjI(:,2),jjI(:,3),...
