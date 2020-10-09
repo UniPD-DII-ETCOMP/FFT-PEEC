@@ -160,7 +160,7 @@ z_realz(idxFz)=z_realF(2*Kt+idxFz);
 disp('----COMPUTING GREEN TENSOR--------------------------------')
 mytic_G=tic;
 [Gmn] = computeGREEN(d,L,M,N,Integration_flag);
-disp([' Total time for getting Green tensor ::: ' ,num2str(toc(mytic_G))]);
+disp([' Time for getting Green tensor ::: ' ,num2str(toc(mytic_G))]);
 disp(' ')
 %% Compute Circulant Tensors
 disp('----COMPUTING CIRCULANT TENSOR--------------------------------')
@@ -173,7 +173,7 @@ opCirculantP_all = opCirculantP_all/eo;
 st_sparse_preconP = st_sparse_preconP/eo;
 opCirculantL_all = (1j*omega*mu)*opCirculantL_all;
 st_sparse_preconL = (1j*omega*mu)*st_sparse_preconL;
-disp([' Total time for getting circulant tensors ::: ' ,num2str(toc(mytic_cir))])
+disp([' Time for getting circulant tensors ::: ' ,num2str(toc(mytic_cir))])
 clear Gmn %Green tensor is not used anymore
 disp(' ')
 %% Generating RHS vector
@@ -197,7 +197,7 @@ disp('----COMPUTING PRECONDITIONER--------------------------------')
 mytic_prec=tic;
 [Y_inv,P_diag,D_diag,LL,UU,PP,QQ,RR] = preparePREC_NEW(d,z_realF,idxFx,idxFy,idxFz,st_sparse_preconP,st_sparse_preconL,AeeR,Aee,Kt,freq);
 fPMV = @(JOut_full_in)multiplyPREC_CAP_NEW(JOut_full_in,AeeR,Y_inv,P_diag,LL,UU,PP,QQ,RR);
-disp([' Total time for computing preconditioner ::: ' ,num2str(toc(mytic_prec))]);
+disp([' Time for computing preconditioner ::: ' ,num2str(toc(mytic_prec))]);
 disp(' ')
 %% Solution of Linear System
 disp('----SOLVING LINEAR SYSTEM-------------------------------')
