@@ -203,7 +203,7 @@ disp(' ')
 disp('----SOLVING LINEAR SYSTEM-------------------------------')
 fMVM = @(J) multiplyMATVECT_EDDY_CAP(J,opCirculantL_all,opCirculantP_all,z_realx,z_realy,z_realz,idxF,d,Aee,L,M,N,AeeR,idxVR,freq);
 mytic_solver=tic;
-[vsol, flag, relres, iter, resvec] = pgmres_mod(@(J)fMVM(J),rhs_vectR, inner_it, tol, outer_it, @(JOut_full_in)fPMV(JOut_full_in) );  
+[vsol] = pgmres_mod(@(J)fMVM(J),rhs_vectR, inner_it, tol, outer_it, @(JOut_full_in)fPMV(JOut_full_in) );  
 disp([' Time for solving system with gmres ::: ' ,num2str(toc(mytic_solver))]);
 disp(' ')
 %% extract solution
