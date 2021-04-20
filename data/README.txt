@@ -13,7 +13,7 @@ How to create a new user-defined test-case:
     stl_files(1).name = 'pcb_coil.stl'; % name of the first stl file to load
     stl_files(1).tag = 'cond';          % tag for the material (write 'cond' for condutive media or "pot" if you want to impose the electric potential)
     stl_files(1).pot=[];                % imposed potential value, only active if stl_files(1).tag='cond'
-    stl_files(1).rho=1/57e6;            % conductivity of the medium
+    stl_files(1).rho=1/57e6;            % resistivity of the medium
     %
     stl_files(2).name = 'pcb_port1.stl'; % name of the second stl file to load
     stl_files(2).tag = 'pot';
