@@ -4,17 +4,16 @@
 % https://github.com/acyucel/VoxHenry
 %%
 function [JOut_full] = multiplyMATVECT_EDDY_CAP(JIn0,CL,CP,z_realx,z_realy,...
-    z_realz,idxF,d,Aee,L,M,N,AeeR,idxVR,freq)
+    z_realz,idxF,d,Aee,L,M,N,idxV,freq)
 dx = d(1); dy = d(2); dz = d(3);
 omega = 2*pi*freq;
 num_node=size(Aee,1); %num potential nodes, 
-num_nodeR=size(AeeR,1); %num potential nodes, 
 num_curr=size(Aee,2); %num current faces
 [LfN, MfN, NfN, ~] = size(CL);
 JIn = zeros(L, M, N, 3); %3 because we have 3 basis functions
 JOut = zeros(L, M, N, 3);    
 JIn(idxF) = JIn0(1:num_curr);
-JOut_full = zeros(num_curr+num_nodeR,1);
+JOut_full = zeros(num_curr+num_node,1);
 fJ = fftn(JIn(:,:,:,1),[LfN, MfN, NfN]);
 Jout1 = CL(:,:,:,1) .* fJ; % Lxx*Jx
 fJ = fftn(JIn(:,:,:,2),[LfN, MfN, NfN]);
@@ -29,18 +28,17 @@ JOut(:,:,:,2) = (dy/(dx*dz)) .* z_realy .* JIn(:,:,:,2) + Jout2(1:L,1:M,1:N);
 JOut(:,:,:,3) = (dz/(dx*dy)) .* z_realz .* JIn(:,:,:,3) + Jout3(1:L,1:M,1:N);
 JOut = JOut(idxF);
 JOut_full(1:num_curr) = JOut;
-JOut_full(1:num_curr) = JOut_full(1:num_curr) + (AeeR.'*JIn0(num_curr+1:num_curr+num_nodeR)) ;
-q = AeeR*JIn0(1:num_curr);
+JOut_full(1:num_curr) = JOut_full(1:num_curr) + (Aee.'*JIn0(num_curr+1:num_curr+num_node)) ;
+q = Aee*JIn0(1:num_curr);
 QIn = zeros(L,M,N);  
-QIn(idxVR) = q;
+QIn(idxV) = q;
 fJ = fftn(QIn(:,:,:),[LfN, MfN, NfN]);
 Jout = CP(:,:,:) .* fJ; % P*Q
 JOut = ifftn(Jout);
 JOut = JOut(1:L,1:M,1:N);
-JOut = JOut(idxVR);
+JOut = JOut(idxV);
 JOut_full(num_curr+1:end) = JOut;
 JOut_full(num_curr+1:end) = ...
     (JOut_full(num_curr+1:end) - (1j*omega*JIn0(num_curr+1:end)));
-
 end
 

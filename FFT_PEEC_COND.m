@@ -9,7 +9,7 @@ warning on
 %% BEGIN USER SETTINGS
 %%
 %% Directory
-name_dir='test1';
+name_dir='test2';
 %% Frequency
 freq = 1e3; %[Hz]
 %% Selections
@@ -75,7 +75,7 @@ eo = 1/co^2/mu;
 omega = 2*pi*freq;
 %% extract data information 
 rhoVoxel=zeros(nVoxel,1);
-idxV=[]; rhomin=Inf; indPotv=[]; valPotv=[]; hhi=1; hho=0;
+idxV=[]; rhomin=Inf; ind_c=[]; val_c=[]; k=1;
 for ii = 1:Nmat
     Ind(ii).ind=reshape(Ind(ii).ind,length(Ind(ii).ind),1);
     if strcmp(Ind(ii).tag,'air') || strcmp(Ind(ii).tag,'mag') || strcmp(Ind(ii).tag,'diel')
@@ -84,20 +84,16 @@ for ii = 1:Nmat
         idxV=[idxV;Ind(ii).ind];  
         rhoVoxel(Ind(ii).ind,1)=Ind(ii).rho;  
         rhomin=min([rhomin,Ind(ii).rho]);
-    elseif strcmp(Ind(ii).tag,'pot')
+    elseif strcmp(Ind(ii).tag,'port')
         idxV=[idxV;Ind(ii).ind]; 
         rhoVoxel(Ind(ii).ind,1)=Ind(ii).rho;
         rhomin=min([rhomin,Ind(ii).rho]);
-        hhi=length(indPotv);
-        indPotv=[indPotv;Ind(ii).ind];  
-        hho=length(indPotv);
-        valPotv(hhi+1:hho,1)=Ind(ii).pot;
+        ind_c(k)=Ind(ii).ind(1);
+        val_c(k)=Ind(ii).cur;
+        k=k+1;
     end
 end
 idxV=unique(idxV);
-[~,indPotv_loc]=intersect(idxV,indPotv); 
-idxVR=idxV;
-idxVR(indPotv_loc)=[]; 
 del = sqrt(2*rhomin/omega/mu); %skin effect: penetration depth
 %% Grid Definition
 disp('----DOMAIN--------------------------------')
@@ -121,8 +117,9 @@ disp(' ')
 %% Incidence Matix A
 disp('----COMPUTING INCIDENCE--------------------------------')
 mytic=tic;
-[Ae,Aee,AeeR,idxF,idxFx,idxFy,idxFz,Ae1x,Ae1y,Ae1z,rhsPOT] = incidence_matrix3(Kt,[L M N],idxV,indPotv,valPotv);
-disp([' Number of DoFs: ', num2str(size(AeeR,1)+size(AeeR,2))])
+[Ae,Aee,idxF,idxFx,idxFy,idxFz,Ae1x,Ae1y,Ae1z] = ...
+    incidence_matrix3(Kt,[L M N],idxV);
+disp([' Number of DoFs: ', num2str(size(Aee,1)+size(Aee,2))])
 disp([' Time for computing incidence ::: ' ,num2str(toc(mytic))]);
 disp(' ')
 %% Forcing Term: Incident E field
@@ -178,32 +175,33 @@ clear Gmn %Green tensor is not used anymore
 disp(' ')
 %% Generating RHS vector
 num_node = size(Aee,1); %all potential nodes in non-empty voxels 
-num_nodeR = size(AeeR,1); %all potential nodes in non-empty voxels excluding ones with given potential
 num_curr = size(Aee,2); %all currens in non-empty voxels 
-%%Define RHS: current + potentials
-rhs_vect = [Vx(idxFx);Vy(idxFy);Vz(idxFz);zeros(num_node,1)]; 
-clear Vx Vy Vz
-%%Reduced RHS: 
-if isempty(indPotv)
-   rhs_vectR=rhs_vect;
-else
-    rhs_vectR=rhs_vect;
-    rhs_vectR(1:num_curr)=rhs_vect(1:num_curr)+rhsPOT;
-    rhs_vectR(num_curr+indPotv_loc,:)=[];
-end
+%%Define RHS: (injected currents)
+iinj=zeros(L*M*N,1);
+iinj(ind_c)=val_c;
+iinj=iinj(idxV);
+QIn = zeros(L,M,N);  
+QIn(idxV) = iinj;
+[LfN, MfN, NfN] = size(opCirculantP_all);
+fJ = fftn(QIn(:,:,:),[LfN, MfN, NfN]);
+Jout = opCirculantP_all(:,:,:) .* fJ; 
+JOut = ifftn(Jout);
+JOut = JOut(1:L,1:M,1:N);
+JOut = JOut(idxV);
+rhs_vect = [Vx(idxFx);Vy(idxFy);Vz(idxFz);-JOut]; 
 clear Vx Vy Vz
 %% Computing Preconditioner
 disp('----COMPUTING PRECONDITIONER--------------------------------')
 mytic_prec=tic;
-[Y_inv,P_diag,D_diag,LL,UU,PP,QQ,RR] = preparePREC_NEW(d,z_realF,idxFx,idxFy,idxFz,st_sparse_preconP,st_sparse_preconL,AeeR,Aee,Kt,freq);
-fPMV = @(JOut_full_in)multiplyPREC_CAP_NEW(JOut_full_in,AeeR,Y_inv,P_diag,LL,UU,PP,QQ,RR);
+[Y_inv,P_diag,D_diag,LL,UU,PP,QQ,RR] = preparePREC_NEW(d,z_realF,idxFx,idxFy,idxFz,st_sparse_preconP,st_sparse_preconL,Aee,Kt,freq);
+fPMV = @(JOut_full_in)multiplyPREC_CAP_NEW(JOut_full_in,Aee,Y_inv,P_diag,LL,UU,PP,QQ,RR);
 disp([' Time for computing preconditioner ::: ' ,num2str(toc(mytic_prec))]);
 disp(' ')
 %% Solution of Linear System
 disp('----SOLVING LINEAR SYSTEM-------------------------------')
-fMVM = @(J) multiplyMATVECT_EDDY_CAP(J,opCirculantL_all,opCirculantP_all,z_realx,z_realy,z_realz,idxF,d,Aee,L,M,N,AeeR,idxVR,freq);
+fMVM = @(J) multiplyMATVECT_EDDY_CAP(J,opCirculantL_all,opCirculantP_all,z_realx,z_realy,z_realz,idxF,d,Aee,L,M,N,idxV,freq);
 mytic_solver=tic;
-[vsol] = pgmres_mod(@(J)fMVM(J),rhs_vectR, inner_it, tol, outer_it, @(JOut_full_in)fPMV(JOut_full_in) );  
+[vsol] = pgmres_mod(@(J)fMVM(J),rhs_vect, inner_it, tol, outer_it, @(JOut_full_in)fPMV(JOut_full_in) );  
 disp([' Time for solving system with gmres ::: ' ,num2str(toc(mytic_solver))]);
 disp(' ')
 %% extract solution
@@ -217,13 +215,7 @@ disp('----POST PROCESSING J------------------------------')
 mytic_prec=tic;
 [J,XYZ] = fun_my_postRT2(Jout,Kt,Ae1x,Ae1y,Ae1z,xyz,L,M,N,d);
 potval=zeros(Kt,1);
-if isempty(indPotv)
-    indLocPotDofs = idxV;
-else
-    indLocPotDofs=setdiff(idxV,indPotv);
-end
-potval(indLocPotDofs,1)=vsol(num_curr+1:end);
-potval(indPotv)=-valPotv;
+potval(idxV)=vsol(num_curr+1:end);
 disp([' Total time for post processing J ::: ' ,num2str(toc(mytic_prec))]);
 disp(' ')
 %% Plot Vectors

@@ -75,7 +75,7 @@ for ii = 1:Nmat_ori
    elseif strcmp(Ind(ii).tag,'mag')
        Ind(ii).ind=[Id_lin(Ind(ii).ind);...
                     Id_lin(L_ori*M_ori*N_ori+Ind(ii).ind)];                   
-   elseif strcmp(Ind(ii).tag,'pot')
+   elseif strcmp(Ind(ii).tag,'pot') || strcmp(Ind(ii).tag,'cur')
        if mymod==1 % ports only in one of the two splitted voxels
            tmp=(Ind(ii).ind);
            Ind(ii).ind=Id_lin(tmp);

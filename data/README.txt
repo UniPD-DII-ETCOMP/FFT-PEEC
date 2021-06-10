@@ -12,17 +12,17 @@ How to create a new user-defined test-case:
     %
     stl_files(1).name = 'pcb_coil.stl'; % name of the first stl file to load
     stl_files(1).tag = 'cond';          % tag for the material (write 'cond' for condutive media or "pot" if you want to impose the electric potential)
-    stl_files(1).pot=[];                % imposed potential value, only active if stl_files(1).tag='cond'
+    stl_files(1).cur=[];                % injected current value, only active if stl_files(1).tag='port';
     stl_files(1).rho=1/57e6;            % resistivity of the medium
     %
     stl_files(2).name = 'pcb_port1.stl'; % name of the second stl file to load
-    stl_files(2).tag = 'pot';
-    stl_files(2).pot=1;
+    stl_files(2).tag = 'port';
+    stl_files(2).cur=1;
     stl_files(2).rho=1/57e6;
     %
     stl_files(3).name = 'pcb_port2.stl';
-    stl_files(3).tag = 'pot';
-    stl_files(3).pot=-1;
+    stl_files(3).tag = 'port';
+    stl_files(3).cur=-1;
     stl_files(3).rho=1/57e6;
     % to scale a stl file from any unit to meters
     scal_geomery.x=1/1000; scal_geomery.y=1/1000; scal_geomery.z=1/1000; % if you want to scale the dimension of the stl data

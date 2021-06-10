@@ -12,17 +12,17 @@ model_name='pcb';
 %
 stl_files(1).name = 'pcb_coil.stl'; 
 stl_files(1).tag = 'cond';
-stl_files(1).pot=[];
+stl_files(1).cur=[];
 stl_files(1).rho=1/57e6;
 %
 stl_files(2).name = 'pcb_port1.stl';
-stl_files(2).tag = 'pot';
-stl_files(2).pot=1;
+stl_files(2).tag = 'port';
+stl_files(2).cur=1;
 stl_files(2).rho=1/57e6;
 %
 stl_files(3).name = 'pcb_port2.stl';
-stl_files(3).tag = 'pot';
-stl_files(3).pot=-1;
+stl_files(3).tag = 'port';
+stl_files(3).cur=-1;
 stl_files(3).rho=1/57e6;
 % to scale a stl file from any unit to meters
 scal_geomery.x=1/1000; scal_geomery.y=1/1000; scal_geomery.z=1/1000;
@@ -210,7 +210,7 @@ smeshx=dx;smeshy=dy;smeshz=dz;
 for ii = 1:how_many_stl
 Ind(ii).ind= find(o(ii).OUTPUTgrid);
 Ind(ii).tag=stl_files(ii).tag;
-Ind(ii).pot=stl_files(ii).pot;
+Ind(ii).cur=stl_files(ii).cur;
 Ind(ii).rho=stl_files(ii).rho;
 end
 %%

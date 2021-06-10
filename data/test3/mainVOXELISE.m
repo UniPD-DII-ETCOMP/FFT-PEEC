@@ -12,21 +12,21 @@ model_name='test';
 %
 stl_files(1).name = 'test_filter.stl'; 
 stl_files(1).tag = 'cond';
-stl_files(1).pot=[];
+stl_files(1).cur=[];
 stl_files(1).rho=1/57e6;
 stl_files(1).epsr=1;
 stl_files(1).mur=1;
 %
 stl_files(2).name = 'test_port1.stl';
-stl_files(2).tag = 'pot';
-stl_files(2).pot=1;
+stl_files(2).tag = 'port';
+stl_files(2).cur=1;
 stl_files(2).rho=1/57e6;
 stl_files(2).epsr=1;
 stl_files(2).mur=1;
 %
 stl_files(3).name = 'test_port2.stl';
-stl_files(3).tag = 'pot';
-stl_files(3).pot=-1;
+stl_files(3).tag = 'port';
+stl_files(3).cur=-1;
 stl_files(3).rho=1/57e6;
 stl_files(3).epsr=1;
 stl_files(3).mur=1;
@@ -216,7 +216,7 @@ smeshx=dx;smeshy=dy;smeshz=dz;
 for ii = 1:how_many_stl
 Ind(ii).ind= find(o(ii).OUTPUTgrid);
 Ind(ii).tag=stl_files(ii).tag;
-Ind(ii).pot=stl_files(ii).pot;
+Ind(ii).cur=stl_files(ii).cur;
 Ind(ii).rho=stl_files(ii).rho;
 end
 %%
