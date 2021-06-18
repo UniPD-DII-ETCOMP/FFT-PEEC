@@ -222,7 +222,7 @@ disp(' ')
 %% impedance
 disp('----IMPEDANCE--------------------------------------')
 Z=potval(ind_c(1))-potval(ind_c(2));
-disp(['Z = ' ,num2str(Z,3)]);
+disp(['Z = ' ,num2str((Z))]);
 disp(' ')
 %% Plot Vectors
 if plot_vectorsJ_flag
