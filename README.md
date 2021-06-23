@@ -35,13 +35,15 @@ Credits
 --------------------
 If you use FFT-PEEC, please consider citing:
 
- [1] R. Torchio, "A Volume PEEC Formulation Based on the Cell Method for Electromagnetic Problems From Low to High Frequency," in IEEE Transactions on Antennas and Propagation, vol. 67, no. 12, pp. 7452-7465, Dec. 2019, doi: 10.1109/TAP.2019.2927789. https://ieeexplore.ieee.org/document/8764572
+ [1] R. Torchio et al., "FFT-PEEC: A Fast Tool From CAD to Power Electronics Simulations," in IEEE Transactions on Antennas and Propagation, vol. 67, no. 12, pp. 7452-7465, Dec. 2019, doi: 10.1109/TAP.2019.2927789. https://ieeexplore.ieee.org/document/8764572
 
- [2] Bettini et al 2020 Plasma Phys. Control. Fusion, https://doi.org/10.1088/1361-6587/abce8f
+ [2] R. Torchio, "A Volume PEEC Formulation Based on the Cell Method for Electromagnetic Problems From Low to High Frequency," in IEEE Transactions on Antennas and Propagation, vol. 67, no. 12, pp. 7452-7465, Dec. 2019, doi: 10.1109/TAP.2019.2927789. https://ieeexplore.ieee.org/document/8764572
+
+ [3] Bettini et al., "Fast Fourier transform-volume integral: a smart approach for the electromagnetic design of complex systems in large fusion devices", Plasma Physics and Controlled Fusion, Volume 63, Number 2, https://iopscience.iop.org/article/10.1088/1361-6587/abce8f
  
 and FFT-PEEC itself
 
- [3] R. Torchio, F. Lucchini, "FFT-PEEC toolbox", https://github.com/UniPD-DII-ETCOMP/FFT-PEEC
+ [4] R. Torchio, F. Lucchini, "FFT-PEEC toolbox", https://github.com/UniPD-DII-ETCOMP/FFT-PEEC
 
 Contacts & Authors
 -----------------------
