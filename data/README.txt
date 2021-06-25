@@ -11,7 +11,7 @@ How to create a new user-defined test-case:
     model_name='pcb';         % name of the model
     %
     stl_files(1).name = 'pcb_coil.stl'; % name of the first stl file to load
-    stl_files(1).tag = 'cond';          % tag for the material (write 'cond' for condutive media or "pot" if you want to impose the electric potential)
+    stl_files(1).tag = 'cond';          % tag for the material (write 'cond' for condutive media or "port" if you want to impose the electric potential)
     stl_files(1).cur=[];                % injected current value, only active if stl_files(1).tag='port';
     stl_files(1).rho=1/57e6;            % resistivity of the medium
     %
