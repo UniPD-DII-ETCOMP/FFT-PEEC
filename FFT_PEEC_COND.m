@@ -9,7 +9,7 @@ warning on
 %% BEGIN USER SETTINGS
 %%
 %% Directory
-name_dir='test2';
+name_dir='test5';
 %% Frequency
 freq = 5e6; %[Hz]
 %% Selections
