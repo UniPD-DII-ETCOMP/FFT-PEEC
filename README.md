@@ -19,7 +19,7 @@ BEGIN USER SETTINGS / END USER SETTINGS comments.
 
 Available test cases
 --------------------
-Three simple test cases are contained in separate directories under "data". 
+Some simple test cases are contained in separate directories under "data". 
 Set the "name_dir" variable in "FFT_PEEC_COND.m"  to the appropriate directory.
 
 User-defined test cases
