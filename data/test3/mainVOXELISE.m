@@ -6,6 +6,7 @@ restoredefaultpath
 warning on
 global meshXmin meshXmax meshYmin meshYmax meshZmin meshZmax
 %% BEGIN USER SETTINGS
+show_mesh = 0;
 paraview_export_flag = 1;
 x_ray_flag = 1;
 model_name='test';
@@ -222,3 +223,6 @@ end
 %%
 Nmat = how_many_stl;
 save data.mat Ind L M N Nmat nVoxel smeshx smeshy smeshz xyz -v7.3
+if show_mesh
+   my_show_mesh 
+end

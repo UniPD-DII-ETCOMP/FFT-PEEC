@@ -6,6 +6,7 @@ How to create a new user-defined test-case:
 3. customize the simulation data between %% BEGIN USER SETTINGS and %% END USER SETTINGS
     Description/Example:
     %% BEGIN USER SETTINGS
+    show_mesh = 0; 	      % if 1 make mesh plot
     paraview_export_flag = 1; % if 1 export paraview files in "res_para" directory
     x_ray_flag = 1;           % if 1 make x_ray plot
     model_name='pcb';         % name of the model

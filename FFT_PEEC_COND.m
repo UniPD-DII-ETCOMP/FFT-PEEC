@@ -220,9 +220,12 @@ potval(idxV)=vsol(num_curr+1:end);
 disp([' Total time for post processing J ::: ' ,num2str(toc(mytic_prec))]);
 disp(' ')
 %% impedance
-disp('----IMPEDANCE--------------------------------------')
 Z=potval(ind_c(1))-potval(ind_c(2));
-disp(['Z = ' ,num2str(Z,3)]);
+disp('-------------------------------------------------------------------')
+disp(' ')
+disp(['  Impedance: ' ,num2str(Z),' Ohm ']);
+disp(' ')
+disp('-------------------------------------------------------------------')
 disp(' ')
 %% Plot Vectors
 if plot_vectorsJ_flag
