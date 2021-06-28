@@ -18,7 +18,7 @@ for ii = 1:length(idx)
 end
 P0=zeros(max(VP(:)),3);
 for ii = 1:max(VP(:))
-P0(ii,:)=idx2triplet(ii,L+1,M+1,N+1);
+P0(ii,:)=idx2triplet(ii,L+1,M+1,N+1).*[dx dy dz];
 end
 figure
 hexa_mesh2(VP,P0,0.3,'r')
