@@ -6,23 +6,23 @@ How to create a new user-defined test-case:
 3. customize the simulation data between %% BEGIN USER SETTINGS and %% END USER SETTINGS
     Description/Example:
     %% BEGIN USER SETTINGS
-    show_mesh = 0; 	      % if 1 make mesh plot
+    show_mesh = 0; 	          % if 1 make mesh plot
     paraview_export_flag = 1; % if 1 export paraview files in "res_para" directory
     x_ray_flag = 1;           % if 1 make x_ray plot
     model_name='pcb';         % name of the model
     %
     stl_files(1).name = 'pcb_coil.stl'; % name of the first stl file to load
-    stl_files(1).tag = 'cond';          % tag for the material (write 'cond' for condutive media or "port" if you want to impose the current)
-    stl_files(1).cur=[];                % injected current value, only active if stl_files(1).tag='port';
+    stl_files(1).tag = 'cond';          % tag for the material (write 'cond' for condutive media or "terminal" if you want to impose the current)
+    stl_files(1).cur=[];                % injected current value, only active if stl_files(1).tag='terminal';
     stl_files(1).rho=1/57e6;            % resistivity of the medium
     %
-    stl_files(2).name = 'pcb_port1.stl'; % name of the second stl file to load
-    stl_files(2).tag = 'port';
+    stl_files(2).name = 'pcb_terminal1.stl'; % name of the second stl file to load
+    stl_files(2).tag = 'terminal';
     stl_files(2).cur=1; % [current value in ampere]
     stl_files(2).rho=1/57e6;
     %
-    stl_files(3).name = 'pcb_port2.stl';
-    stl_files(3).tag = 'port';
+    stl_files(3).name = 'pcb_terminal2.stl';
+    stl_files(3).tag = 'terminal';
     stl_files(3).cur=-1;
     stl_files(3).rho=1/57e6;
     % to scale a stl file from any unit to meters

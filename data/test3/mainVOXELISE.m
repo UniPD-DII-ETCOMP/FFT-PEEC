@@ -18,15 +18,15 @@ stl_files(1).rho=1/57e6;
 stl_files(1).epsr=1;
 stl_files(1).mur=1;
 %
-stl_files(2).name = 'test_port1.stl';
-stl_files(2).tag = 'port';
+stl_files(2).name = 'test_terminal1.stl';
+stl_files(2).tag = 'terminal';
 stl_files(2).cur=1;
 stl_files(2).rho=1/57e6;
 stl_files(2).epsr=1;
 stl_files(2).mur=1;
 %
-stl_files(3).name = 'test_port2.stl';
-stl_files(3).tag = 'port';
+stl_files(3).name = 'test_terminal2.stl';
+stl_files(3).tag = 'terminal';
 stl_files(3).cur=-1;
 stl_files(3).rho=1/57e6;
 stl_files(3).epsr=1;

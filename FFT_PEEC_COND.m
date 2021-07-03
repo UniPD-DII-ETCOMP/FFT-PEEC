@@ -84,7 +84,7 @@ for ii = 1:Nmat
         idxV=[idxV;Ind(ii).ind];  
         rhoVoxel(Ind(ii).ind,1)=Ind(ii).rho;  
         rhomin=min([rhomin,Ind(ii).rho]);
-    elseif strcmp(Ind(ii).tag,'port')
+    elseif strcmp(Ind(ii).tag,'terminal')
         idxV=[idxV;Ind(ii).ind]; 
         rhoVoxel(Ind(ii).ind,1)=Ind(ii).rho;
         rhomin=min([rhomin,Ind(ii).rho]);

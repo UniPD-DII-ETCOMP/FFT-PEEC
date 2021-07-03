@@ -16,13 +16,13 @@ stl_files(1).tag = 'cond';
 stl_files(1).cur=[];
 stl_files(1).rho=1/57e6;
 %
-stl_files(2).name = 'pcb_port1.stl';
-stl_files(2).tag = 'port';
+stl_files(2).name = 'pcb_terminal1.stl';
+stl_files(2).tag = 'terminal';
 stl_files(2).cur=1;
 stl_files(2).rho=1/57e6;
 %
-stl_files(3).name = 'pcb_port2.stl';
-stl_files(3).tag = 'port';
+stl_files(3).name = 'pcb_terminal2.stl';
+stl_files(3).tag = 'terminal';
 stl_files(3).cur=-1;
 stl_files(3).rho=1/57e6;
 % to scale a stl file from any unit to meters
