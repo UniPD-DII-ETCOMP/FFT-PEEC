@@ -17,6 +17,7 @@ plot_vectorsJ_flag = 1; %quiver plot of real and imag of J
 plot_potential_flag = 1; %color plot of phi real and imag
 paraview_export_flag = 1; % export to paraviw
 refine.flag = 0; refine.x=1; refine.y=1; refine.z=1; % refine
+retardation_flag = 0;         % retarded potential flag
 Integration_flag = 'NumAn'; %'NumAn'; 'NumNum' (Integration: NumericalNumerical or AnalyticalNumerical)
 ext_field_flag = 0; % exernal field
 % below you can write the external electric field as a function of x,y,z
@@ -159,6 +160,14 @@ mytic_G=tic;
 [Gmn] = computeGREEN(d,L,M,N,Integration_flag);
 disp([' Time for getting Green tensor ::: ' ,num2str(toc(mytic_G))]);
 disp(' ')
+%% Compute Exponential Tensor For Retardation
+if retardation_flag
+lambda = co./freq;
+ko = 2*pi./lambda;
+[Emn] = expGREEN(ko,d,L,M,N);
+Gmn = Gmn.*Emn; 
+clear Emn %clear exponential tensor
+end
 %% Compute Circulant Tensors
 disp('----COMPUTING CIRCULANT TENSOR--------------------------------')
 disp(' Circulant Tensors related to P,L matrices')
