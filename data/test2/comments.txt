@@ -1,0 +1,2 @@
+turn on capacitive effects for this test case!
+this is an open circuit model

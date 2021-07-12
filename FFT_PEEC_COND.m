@@ -55,6 +55,17 @@ for ii = 1:size(fileList,1)
     title('stl (original, not scaled)')
     drawnow
 end
+try
+   disp('-------------------------------------------------------------------')
+   disp(' ') 
+   type('comments.txt') 
+   disp(' ')
+   disp('PRESS ANY BUTTON TO CONTINUE')
+   disp(' ')
+   pause
+   disp(' ')
+   disp('-------------------------------------------------------------------')
+end
 cd(dad)
 modelname = name_dir;
 %% refine
