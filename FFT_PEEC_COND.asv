@@ -5,21 +5,20 @@ clear
 clc
 restoredefaultpath
 warning on
-format short
 %%
 %% BEGIN USER SETTINGS
 %%
 %% Directory
-name_dir='test5';
+name_dir='test_FluxGateCoil';
 %% Frequency
-freq = 1e6; %[Hz]
+freq = 1e3; %[Hz]
 %% Selections
 plot_vectorsJ_flag = 1; %quiver plot of real and imag of J
 plot_potential_flag = 1; %color plot of phi real and imag
 paraview_export_flag = 1; % export to paraviw
 refine.flag = 0; refine.x=1; refine.y=1; refine.z=1; % refine
 capacitive_effects_flag = 0;  % capacitive effects flag 
-retardation_flag = 0;         % retarded potential flag
+retardation_flag = 1;         % retarded potential flag
 Integration_flag = 'NumAn'; %'NumAn'; 'NumNum' (Integration: NumericalNumerical or AnalyticalNumerical)
 ext_field_flag = 0; % exernal field
 % below you can write the external electric field as a function of x,y,z
@@ -122,15 +121,6 @@ disp('----COMPUTING INCIDENCE--------------------------------')
 mytic=tic;
 [Ae,Aee,idxF,idxFx,idxFy,idxFz,Ae1x,Ae1y,Ae1z] = ...
     incidence_matrix3(Kt,[L M N],idxV);
-if capacitive_effects_flag==0
-    ind=zeros(L*M*N,1);
-    ind(ind_c)=val_c;
-    ind=ind(idxV);
-    ind=setdiff(1:length(idxV),find(ind));
-    Aee(max(ind),:)=[];
-    idxV(max(ind))=[];
-    K = length(idxV); %number of non-empty voxels
-end
 disp([' Number of DoFs: ', num2str(size(Aee,1)+size(Aee,2))])
 disp([' Time for computing incidence ::: ' ,num2str(toc(mytic))]);
 disp(' ')
@@ -252,15 +242,11 @@ potval(idxV)=vsol(num_curr+1:end);
 disp([' Total time for post processing J ::: ' ,num2str(toc(mytic_prec))]);
 disp(' ')
 %% impedance
-Z=potval(ind_c(1))-potval(ind_c(2)); % Z=V/I
-Ren=0.5*vsol(1:num_curr)'*([z_realx(idxFx)*dx/(dy*dz);z_realy(idxFy)*dy/(dx*dz);z_realz(idxFz)*dz/(dy*dx)].*vsol(1:num_curr)); % losses
+Z=potval(ind_c(1))-potval(ind_c(2));
+Ren=0.5*vsol(1:num_curr)'*([z_realx(idxFx)*dx/(dy*dz);z_realy(idxFy)*dy/(dx*dz);z_realz(idxFz)*dz/(dy*dx)].*vsol(1:num_curr));
 disp('-------------------------------------------------------------------')
 disp(' ')
-if retardation_flag
-    disp(['  Impedance: ' ,num2str(Z),' Ohm ']);
-else
-    disp(['  Impedance: ' ,num2str(Ren+1j*imag(Z)),' Ohm ']);
-end
+disp(['  Impedance: ' ,num2str(Z),' Ohm ']);
 disp(' ')
 disp('-------------------------------------------------------------------')
 disp(' ')
