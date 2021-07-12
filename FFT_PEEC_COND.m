@@ -10,7 +10,7 @@ format short
 %% BEGIN USER SETTINGS
 %%
 %% Directory
-name_dir='test5';
+name_dir='test6';
 %% Frequency
 freq = 1e6; %[Hz]
 %% Selections

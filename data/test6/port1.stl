@@ -1,0 +1,86 @@
+solid default:import_3
+  facet normal 1.000000e+00 -0.000000e+00 -0.000000e+00
+    outer loop
+      vertex 2.000000e-01 1.000000e-02 2.000000e-03
+      vertex 2.000000e-01 0.000000e+00 -2.000000e-03
+      vertex 2.000000e-01 1.000000e-02 -2.000000e-03
+    endloop
+  endfacet
+  facet normal 1.000000e+00 -0.000000e+00 -0.000000e+00
+    outer loop
+      vertex 2.000000e-01 0.000000e+00 2.000000e-03
+      vertex 2.000000e-01 0.000000e+00 -2.000000e-03
+      vertex 2.000000e-01 1.000000e-02 2.000000e-03
+    endloop
+  endfacet
+  facet normal -0.000000e+00 1.000000e+00 -0.000000e+00
+    outer loop
+      vertex 1.900000e-01 1.000000e-02 2.000000e-03
+      vertex 2.000000e-01 1.000000e-02 -2.000000e-03
+      vertex 1.900000e-01 1.000000e-02 -2.000000e-03
+    endloop
+  endfacet
+  facet normal -0.000000e+00 1.000000e+00 -0.000000e+00
+    outer loop
+      vertex 2.000000e-01 1.000000e-02 2.000000e-03
+      vertex 2.000000e-01 1.000000e-02 -2.000000e-03
+      vertex 1.900000e-01 1.000000e-02 2.000000e-03
+    endloop
+  endfacet
+  facet normal -1.000000e+00 -0.000000e+00 -0.000000e+00
+    outer loop
+      vertex 1.900000e-01 0.000000e+00 2.000000e-03
+      vertex 1.900000e-01 1.000000e-02 -2.000000e-03
+      vertex 1.900000e-01 0.000000e+00 -2.000000e-03
+    endloop
+  endfacet
+  facet normal -1.000000e+00 -0.000000e+00 -0.000000e+00
+    outer loop
+      vertex 1.900000e-01 1.000000e-02 2.000000e-03
+      vertex 1.900000e-01 1.000000e-02 -2.000000e-03
+      vertex 1.900000e-01 0.000000e+00 2.000000e-03
+    endloop
+  endfacet
+  facet normal -0.000000e+00 -1.000000e+00 -0.000000e+00
+    outer loop
+      vertex 2.000000e-01 0.000000e+00 2.000000e-03
+      vertex 1.900000e-01 0.000000e+00 -2.000000e-03
+      vertex 2.000000e-01 0.000000e+00 -2.000000e-03
+    endloop
+  endfacet
+  facet normal -0.000000e+00 -1.000000e+00 -0.000000e+00
+    outer loop
+      vertex 1.900000e-01 0.000000e+00 2.000000e-03
+      vertex 1.900000e-01 0.000000e+00 -2.000000e-03
+      vertex 2.000000e-01 0.000000e+00 2.000000e-03
+    endloop
+  endfacet
+  facet normal -0.000000e+00 -0.000000e+00 -1.000000e+00
+    outer loop
+      vertex 2.000000e-01 1.000000e-02 -2.000000e-03
+      vertex 1.900000e-01 0.000000e+00 -2.000000e-03
+      vertex 1.900000e-01 1.000000e-02 -2.000000e-03
+    endloop
+  endfacet
+  facet normal -0.000000e+00 -0.000000e+00 -1.000000e+00
+    outer loop
+      vertex 2.000000e-01 0.000000e+00 -2.000000e-03
+      vertex 1.900000e-01 0.000000e+00 -2.000000e-03
+      vertex 2.000000e-01 1.000000e-02 -2.000000e-03
+    endloop
+  endfacet
+  facet normal 0.000000e+00 0.000000e+00 1.000000e+00
+    outer loop
+      vertex 2.000000e-01 0.000000e+00 2.000000e-03
+      vertex 1.900000e-01 1.000000e-02 2.000000e-03
+      vertex 1.900000e-01 0.000000e+00 2.000000e-03
+    endloop
+  endfacet
+  facet normal 0.000000e+00 0.000000e+00 1.000000e+00
+    outer loop
+      vertex 2.000000e-01 1.000000e-02 2.000000e-03
+      vertex 1.900000e-01 1.000000e-02 2.000000e-03
+      vertex 2.000000e-01 0.000000e+00 2.000000e-03
+    endloop
+  endfacet
+endsolid default:import_3

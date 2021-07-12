@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<Xdmf>
+<Domain>
+<Grid Name="Mesh_Grid">
+<Topology NumberOfElements="23635" TopologyType="Hexahedron">
+<DataItem DataType="Int" Dimensions="23635 8" Format="HDF">
+test6J.hdf:/mesh/tet
+</DataItem>
+</Topology>
+<Geometry GeometryType="XYZ">
+<DataItem DataType="Float" Dimensions="189080 3" Format="HDF">
+test6J.hdf:/mesh/coord
+</DataItem>
+</Geometry>
+<Attribute AttributeType="Vector" Center="Cell" Name="Vectors_re">
+<DataItem DataType="Float" Dimensions="23635 3" Format="HDF">
+test6J.hdf:/mesh/vec_re
+</DataItem>
+</Attribute>
+<Attribute AttributeType="Vector" Center="Cell" Name="Vectors_im">
+<DataItem DataType="Float" Dimensions="23635 3" Format="HDF">
+test6J.hdf:/mesh/vec_im
+</DataItem>
+</Attribute>
+</Grid>
+</Domain>
+</Xdmf>
