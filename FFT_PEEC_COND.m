@@ -262,9 +262,10 @@ potval=zeros(Kt,1);
 potval(idxV)=vsol(num_curr+1:end);
 disp([' Total time for post processing J ::: ' ,num2str(toc(mytic_prec))]);
 disp(' ')
-%% impedance
+%% impedance (note that the injected current must be 1A!)
 Z=potval(ind_c(1))-potval(ind_c(2)); % Z=V/I
-Ren=0.5*vsol(1:num_curr)'*([z_realx(idxFx)*dx/(dy*dz);z_realy(idxFy)*dy/(dx*dz);z_realz(idxFz)*dz/(dy*dx)].*vsol(1:num_curr)); % losses
+Plosses=0.5*vsol(1:num_curr)'*([z_realx(idxFx)*dx/(dy*dz);z_realy(idxFy)*dy/(dx*dz);z_realz(idxFz)*dz/(dy*dx)].*vsol(1:num_curr)); % losses
+Ren=Plosses*2;
 disp('-------------------------------------------------------------------')
 disp(' ')
 if retardation_flag
