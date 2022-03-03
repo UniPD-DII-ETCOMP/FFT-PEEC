@@ -327,7 +327,7 @@ real*8 r_m(3), d(3)
 real*8 xyz_src(Np,3)
 real*8 xyz_trg(Np,3)
 real*8 face(4,3,6), triang_face(3,3,2,6)
-real*8 r_f(3),r_e(4,3,6),u_e(4,3,6)
+real*8 r_f(6,3),r_e(4,3,6),u_e(4,3,6)
 integer*8 idxf_dot(6,2),idxf_cross(2,3,6)
 integer*8 N_thread
 real*8 w(Np), y
@@ -461,12 +461,12 @@ do kk = 1,Np
         ftp1_1 = triang_face(1,1:3,1,ii)-P_target(kk,1:3)
         ftp2_1 = triang_face(2,1:3,1,ii)-P_target(kk,1:3)
         ftp3_1 = triang_face(3,1:3,1,ii)-P_target(kk,1:3)
-        ftp4_1 = triang_face(4,1:3,1,ii)-P_target(kk,1:3)
+        !ftp4_1 = triang_face(4,1:3,1,ii)-P_target(kk,1:3)
         
         ftp1_2 = triang_face(1,1:3,2,ii)-P_target(kk,1:3)
         ftp2_2 = triang_face(2,1:3,2,ii)-P_target(kk,1:3)
         ftp3_2 = triang_face(3,1:3,2,ii)-P_target(kk,1:3)
-        ftp4_2 = triang_face(4,1:3,2,ii)-P_target(kk,1:3)
+        !ftp4_2 = triang_face(4,1:3,2,ii)-P_target(kk,1:3)
         
         D1 =  norm2(ftp1_1(1:3))*norm2(ftp2_1(1:3))*norm2(ftp3_1(1:3)) &
                + norm2(ftp3_1(1:3))*dot_product(ftp1_1(1:3),ftp2_1(1:3)) &
