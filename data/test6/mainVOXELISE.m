@@ -30,8 +30,8 @@ stl_files(3).rho=1/57e6;
 scal_geomery.x=1/1000; scal_geomery.y=1/1000; scal_geomery.z=1/1000;
 % Box 
 % number of voxels in the x y z directions
-Nx=250;
-Ny=250;
+Nx=200;
+Ny=200;
 Nz=7;
 % corners
 flag_auto=1; % if 1, user_data below are ignored

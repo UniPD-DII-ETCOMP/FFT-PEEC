@@ -12,13 +12,13 @@ format short
 %% Directory
 name_dir='test6';
 %% Frequency
-freq = 1e6; %[Hz]
+freq = 5e6; %[Hz]
 %% Selections
 plot_vectorsJ_flag = 1; %quiver plot of real and imag of J
 plot_potential_flag = 1; %color plot of phi real and imag
 paraview_export_flag = 1; % export to paraviw
 refine.flag = 0; refine.x=1; refine.y=1; refine.z=1; % refine
-capacitive_effects_flag = 0;  % capacitive effects flag 
+capacitive_effects_flag = 1;  % capacitive effects flag 
 retardation_flag = 0;         % retarded potential flag
 Integration_flag = 'NumAn'; %'NumAn'; 'NumNum' (Integration: NumericalNumerical or AnalyticalNumerical)
 ext_field_flag = 0; % exernal field
@@ -27,8 +27,8 @@ ext_field_flag = 0; % exernal field
 Ex_ext = @(x,y,z,omega) -1j*omega*y; Ey_ext = @(x,y,z,omega) 1j*omega*x; Ez_ext = @(x,y,z,omega) 0*z; % external field 
 %% Solver parameters
 tol = 1e-6;
-inner_it = 60;
-outer_it = 15;
+inner_it = 90;
+outer_it = 1;
 %%
 %% END USER SETTINGS
 %%
@@ -377,3 +377,4 @@ warning off
     real(potval(idxV,:)),imag(potval(idxV,:)),P0,VP,dad,[modelname,'p']);
 warning on
 end
+%%

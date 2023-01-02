@@ -4,22 +4,22 @@
 <Grid Name="Mesh_Grid">
 <Topology NumberOfElements="15675" TopologyType="Hexahedron">
 <DataItem DataType="Int" Dimensions="15675 8" Format="HDF">
-test6J.hdf:/mesh/tet
+test7p.hdf:/mesh/hex
 </DataItem>
 </Topology>
 <Geometry GeometryType="XYZ">
 <DataItem DataType="Float" Dimensions="125400 3" Format="HDF">
-test6J.hdf:/mesh/coord
+test7p.hdf:/mesh/coord
 </DataItem>
 </Geometry>
-<Attribute AttributeType="Vector" Center="Cell" Name="Vectors_re">
-<DataItem DataType="Float" Dimensions="15675 3" Format="HDF">
-test6J.hdf:/mesh/vec_re
+<Attribute Center="Cell" Name="Scalar_re">
+<DataItem DataType="Float" Dimensions="15675" Format="HDF">
+test7p.hdf:/mesh/sca_re
 </DataItem>
 </Attribute>
-<Attribute AttributeType="Vector" Center="Cell" Name="Vectors_im">
-<DataItem DataType="Float" Dimensions="15675 3" Format="HDF">
-test6J.hdf:/mesh/vec_im
+<Attribute Center="Cell" Name="Scalar_im">
+<DataItem DataType="Float" Dimensions="15675" Format="HDF">
+test7p.hdf:/mesh/sca_im
 </DataItem>
 </Attribute>
 </Grid>
